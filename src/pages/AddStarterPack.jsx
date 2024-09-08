@@ -78,7 +78,7 @@ const AddStarterPack = () => {
                 <Button
                   key={index}
                   variant="outline"
-                  className="mr-2 mb-2"
+                  className={`mr-2 mb-2 ${selectedPack === pack ? 'bg-primary text-primary-foreground' : ''}`}
                   onClick={() => handleSelectPack(pack)}
                 >
                   {pack}
@@ -89,7 +89,9 @@ const AddStarterPack = () => {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Lists</CardTitle>
+            <CardTitle>
+              {selectedPack ? `Add '${selectedPack}' to List` : 'Lists'}
+            </CardTitle>
           </CardHeader>
           <CardContent>
             {showNewListInput ? (
