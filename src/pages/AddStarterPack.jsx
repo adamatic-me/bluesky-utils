@@ -77,7 +77,7 @@ const AddStarterPack = () => {
               {filteredStarterPacks.map((pack, index) => (
                 <Button
                   key={index}
-                  variant="outline"
+                  variant={selectedPack === pack ? "default" : "outline"}
                   className="mr-2 mb-2"
                   onClick={() => handleSelectPack(pack)}
                 >
@@ -89,7 +89,7 @@ const AddStarterPack = () => {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Lists</CardTitle>
+            <CardTitle>{selectedPack ? `Add ${selectedPack} to List` : 'Lists'}</CardTitle>
           </CardHeader>
           <CardContent>
             {showNewListInput ? (
