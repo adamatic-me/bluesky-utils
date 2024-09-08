@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import Breadcrumb from '../components/Breadcrumb';
+import { X } from 'lucide-react';
 
 const AddStarterPack = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -31,7 +32,11 @@ const AddStarterPack = () => {
   };
 
   const handleSelectPack = (pack) => {
-    setSelectedPack(pack);
+    setSelectedPack(prevPack => prevPack === pack ? null : pack);
+  };
+
+  const handleClearSelection = () => {
+    setSelectedPack(null);
   };
 
   const handleAddToList = (list) => {
@@ -66,13 +71,24 @@ const AddStarterPack = () => {
             <CardTitle>Starter Pack</CardTitle>
           </CardHeader>
           <CardContent>
-            <Input
-              type="text"
-              placeholder="Find Starter Pack..."
-              value={searchTerm}
-              onChange={handleSearch}
-              className="mb-4"
-            />
+            <div className="flex mb-4">
+              <Input
+                type="text"
+                placeholder="Find Starter Pack..."
+                value={searchTerm}
+                onChange={handleSearch}
+                className="flex-grow"
+              />
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleClearSelection}
+                className="ml-2"
+                disabled={!selectedPack}
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
             <div className="flex flex-wrap">
               {filteredStarterPacks.map((pack, index) => (
                 <Button
