@@ -23,7 +23,7 @@ const Dashboard = () => {
           </CardHeader>
           <CardContent>
             <Button onClick={() => navigate('/add-starter-pack')} className="w-full">
-              Go to Add Starter Pack
+              Go to Add Starter Pack to List
             </Button>
           </CardContent>
         </Card>

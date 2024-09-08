@@ -16,7 +16,7 @@ const AddStarterPack = () => {
   const breadcrumbItems = [
     { label: 'Home', path: '/' },
     { label: 'Dashboard', path: '/dashboard' },
-    { label: 'Add Starter Pack', path: '/add-starter-pack' },
+    { label: 'Add Starter Pack to List', path: '/add-starter-pack' },
   ];
 
   useEffect(() => {

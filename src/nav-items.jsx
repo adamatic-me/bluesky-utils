@@ -18,7 +18,7 @@ export const navItems = [
     page: <Dashboard />,
   },
   {
-    title: "Add Starter Pack",
+    title: "Add Starter Pack to List",
     to: "/add-starter-pack",
     icon: <PlusCircleIcon className="h-4 w-4" />,
     page: <AddStarterPack />,
