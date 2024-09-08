@@ -2,12 +2,19 @@ import React, { useState } from 'react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import Breadcrumb from '../components/Breadcrumb';
 
 const AddStarterPack = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState(['Journalists', 'Astronomy', 'Bluesky']);
   const [selectedPack, setSelectedPack] = useState(null);
   const [userLists, setUserLists] = useState(['My Favorites', 'Tech News', 'Friends']);
+
+  const breadcrumbItems = [
+    { label: 'Home', path: '/' },
+    { label: 'Dashboard', path: '/dashboard' },
+    { label: 'Add Starter Pack', path: '/add-starter-pack' },
+  ];
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -25,6 +32,7 @@ const AddStarterPack = () => {
 
   return (
     <div className="min-h-screen p-8 bg-gray-100">
+      <Breadcrumb items={breadcrumbItems} />
       <h1 className="text-3xl font-bold mb-8">Add Starter Pack to List</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card>

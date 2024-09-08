@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { GripVertical } from 'lucide-react';
+import Breadcrumb from '../components/Breadcrumb';
 
 const ReorderFeeds = () => {
   const [feeds, setFeeds] = useState([
@@ -11,6 +12,12 @@ const ReorderFeeds = () => {
     "Popular With Friends",
     "Science"
   ]);
+
+  const breadcrumbItems = [
+    { label: 'Home', path: '/' },
+    { label: 'Dashboard', path: '/dashboard' },
+    { label: 'Re-order Feeds', path: '/reorder-feeds' },
+  ];
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
@@ -24,6 +31,7 @@ const ReorderFeeds = () => {
 
   return (
     <div className="min-h-screen p-8 bg-gray-100">
+      <Breadcrumb items={breadcrumbItems} />
       <h1 className="text-3xl font-bold mb-8">Re-order Feeds</h1>
       <Card>
         <CardHeader>
