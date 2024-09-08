@@ -1,4 +1,4 @@
-import { HomeIcon, PlusCircleIcon, ListReorderIcon } from "lucide-react";
+import { HomeIcon, PlusCircleIcon, ListIcon } from "lucide-react";
 import Index from "./pages/Index.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import AddStarterPack from "./pages/AddStarterPack.jsx";
@@ -26,7 +26,7 @@ export const navItems = [
   {
     title: "Re-order Feeds",
     to: "/reorder-feeds",
-    icon: <ListReorderIcon className="h-4 w-4" />,
+    icon: <ListIcon className="h-4 w-4" />,
     page: <ReorderFeeds />,
   },
 ];
