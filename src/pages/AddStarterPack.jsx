@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -6,7 +6,8 @@ import Breadcrumb from '../components/Breadcrumb';
 
 const AddStarterPack = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [suggestions, setSuggestions] = useState(['Journalists', 'Astronomy', 'Bluesky']);
+  const [allStarterPacks, setAllStarterPacks] = useState(['Journalists', 'Astronomy', 'Bluesky', 'Technology', 'Art', 'Music', 'Sports', 'Politics', 'Fashion', 'Food']);
+  const [filteredStarterPacks, setFilteredStarterPacks] = useState(allStarterPacks);
   const [selectedPack, setSelectedPack] = useState(null);
   const [userLists, setUserLists] = useState(['My Favorites', 'Tech News', 'Friends']);
 
@@ -16,9 +17,15 @@ const AddStarterPack = () => {
     { label: 'Add Starter Pack', path: '/add-starter-pack' },
   ];
 
+  useEffect(() => {
+    const filtered = allStarterPacks.filter(pack => 
+      pack.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredStarterPacks(filtered);
+  }, [searchTerm, allStarterPacks]);
+
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
-    // TODO: Implement actual search logic
   };
 
   const handleSelectPack = (pack) => {
@@ -47,16 +54,18 @@ const AddStarterPack = () => {
               onChange={handleSearch}
               className="mb-4"
             />
-            {suggestions.map((suggestion, index) => (
-              <Button
-                key={index}
-                variant="outline"
-                className="mr-2 mb-2"
-                onClick={() => handleSelectPack(suggestion)}
-              >
-                {suggestion}
-              </Button>
-            ))}
+            <div className="flex flex-wrap">
+              {filteredStarterPacks.map((pack, index) => (
+                <Button
+                  key={index}
+                  variant="outline"
+                  className="mr-2 mb-2"
+                  onClick={() => handleSelectPack(pack)}
+                >
+                  {pack}
+                </Button>
+              ))}
+            </div>
           </CardContent>
         </Card>
         <Card>
