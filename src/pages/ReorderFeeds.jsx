@@ -30,7 +30,7 @@ const ReorderFeeds = () => {
   };
 
   return (
-    <div className="min-h-screen p-8 bg-gray-100">
+    <div className="min-h-screen p-8 bg-background">
       <Breadcrumb items={breadcrumbItems} />
       <h1 className="text-3xl font-bold mb-8">Re-order Feeds</h1>
       <Card>
@@ -48,11 +48,11 @@ const ReorderFeeds = () => {
                         <li
                           ref={provided.innerRef}
                           {...provided.draggableProps}
-                          className="flex items-center justify-between p-4 mb-2 bg-white rounded shadow"
+                          className="flex items-center justify-between p-4 mb-2 bg-card rounded shadow"
                         >
                           <span>{feed}</span>
                           <div {...provided.dragHandleProps}>
-                            <GripVertical className="text-gray-400" />
+                            <GripVertical className="text-muted-foreground" />
                           </div>
                         </li>
                       )}

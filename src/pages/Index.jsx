@@ -17,7 +17,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-background">
       <Card className="w-[350px]">
         <CardHeader>
           <CardTitle>Bluesky Utils Login</CardTitle>

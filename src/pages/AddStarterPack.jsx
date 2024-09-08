@@ -57,7 +57,7 @@ const AddStarterPack = () => {
   };
 
   return (
-    <div className="min-h-screen p-8 bg-gray-100">
+    <div className="min-h-screen p-8 bg-background">
       <Breadcrumb items={breadcrumbItems} />
       <h1 className="text-3xl font-bold mb-8">Add Starter Pack to List</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
