@@ -10,6 +10,8 @@ const AddStarterPack = () => {
   const [filteredStarterPacks, setFilteredStarterPacks] = useState(allStarterPacks);
   const [selectedPack, setSelectedPack] = useState(null);
   const [userLists, setUserLists] = useState(['My Favorites', 'Tech News', 'Friends']);
+  const [showNewListInput, setShowNewListInput] = useState(false);
+  const [newListName, setNewListName] = useState('');
 
   const breadcrumbItems = [
     { label: 'Home', path: '/' },
@@ -35,6 +37,23 @@ const AddStarterPack = () => {
   const handleAddToList = (list) => {
     console.log(`Adding ${selectedPack} to ${list}`);
     // TODO: Implement actual add to list logic
+  };
+
+  const handleNewList = () => {
+    setShowNewListInput(true);
+  };
+
+  const handleSaveNewList = () => {
+    if (newListName.trim()) {
+      setUserLists([...userLists, newListName.trim()]);
+      setNewListName('');
+      setShowNewListInput(false);
+    }
+  };
+
+  const handleCancelNewList = () => {
+    setNewListName('');
+    setShowNewListInput(false);
   };
 
   return (
@@ -73,7 +92,23 @@ const AddStarterPack = () => {
             <CardTitle>Lists</CardTitle>
           </CardHeader>
           <CardContent>
-            <Button className="mb-4">New List</Button>
+            {showNewListInput ? (
+              <div className="mb-4">
+                <Input
+                  type="text"
+                  placeholder="New List name..."
+                  value={newListName}
+                  onChange={(e) => setNewListName(e.target.value)}
+                  className="mb-2"
+                />
+                <div className="flex justify-end space-x-2">
+                  <Button variant="outline" onClick={handleCancelNewList}>Cancel</Button>
+                  <Button onClick={handleSaveNewList}>Save</Button>
+                </div>
+              </div>
+            ) : (
+              <Button className="mb-4" onClick={handleNewList}>New List</Button>
+            )}
             {userLists.map((list, index) => (
               <div key={index} className="flex justify-between items-center mb-2">
                 <span>{list}</span>
