@@ -125,7 +125,13 @@ const AddStarterPack = () => {
                 </div>
               </div>
             ) : (
-              <Button className="mb-4" onClick={handleNewList}>New List</Button>
+              <Button 
+                className="mb-4" 
+                onClick={handleNewList}
+                disabled={!selectedPack}
+              >
+                New List
+              </Button>
             )}
             {userLists.map((list, index) => (
               <div key={index} className="flex justify-between items-center mb-2">
